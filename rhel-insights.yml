@@ -1,0 +1,12 @@
+---
+  - name: Playbook para Instalar Red Hat Insights
+    hosts: all
+    tasks:
+       - name: Suscripcion RED HAT
+         redhat_subscription: state=present username=rgfuentes@synopsis.ws password=Rgfuentes2019 autosubscribe=true
+       - name: Install insights-client
+         yum: 
+            name: insights-client 
+            state: present
+       - name: Registrar insights
+         command: redhat-access-insights --register
